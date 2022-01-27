@@ -6,7 +6,7 @@ services:
     user: root
     restart: always
     ports:
-      - "8000:8000"
+      - "8003:8000"
     environment:
       - UPLOAD_FOLDER=/var/uploads
       - DATABASE_URL=mysql+pymysql://ctfd:ctfd@db/ctfd
@@ -27,12 +27,12 @@ services:
         internal:
 
   nginx:
-    image: nginx:1.17
+    image: nginx:1.20
     restart: always
     volumes:
       - ./conf/nginx/http.conf:/etc/nginx/nginx.conf
     ports:
-      - 80:80
+      - 8004:80
     depends_on:
       - ctfd
 
